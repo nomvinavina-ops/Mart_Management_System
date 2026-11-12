@@ -1,0 +1,4 @@
+window.addEventListener('layout-ready',async()=>{
+  document.getElementById('page').innerHTML=`<div class="page-title"><div><h1>Inventory</h1><p>Monitor current stock and low-stock alerts.</p></div></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Product</th><th>Category</th><th>Stock</th><th>Expiry</th><th>Status</th></tr></thead><tbody id="inv"></tbody></table></div></div>`;
+  try{const r=await API.get('api/inventory/index.php');document.getElementById('inv').innerHTML=r.data.map(x=>`<tr><td>${x.product_code}</td><td>${x.product_name}</td><td>${x.category_name||'-'}</td><td>${x.quantity}</td><td>${x.expiry_date||'-'}</td><td><span class="badge ${+x.quantity<=5?'low':'ok'}">${+x.quantity<=5?'Low':'Available'}</span></td></tr>`).join('');}catch(e){document.getElementById('inv').innerHTML=`<tr><td colspan="6">${e.message}</td></tr>`;}
+});

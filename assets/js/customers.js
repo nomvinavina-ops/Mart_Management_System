@@ -1,0 +1,3 @@
+window.addEventListener('layout-ready',()=>{
+  document.getElementById('page').innerHTML=`<div class="page-title"><div><h1>People Management</h1><p>Customers, suppliers and employees.</p></div><button class="btn primary">+ Add Customer</button></div><div class="tabs"><button class="active">Customers</button><button>Suppliers</button><button>Employees</button></div><div class="panel"><input class="wide-input" placeholder="Search customer name or phone..."><div class="empty-state">Connect your Customer/Supplier CRUD API here. The same validation and role protection pattern is ready in the project.</div></div>`;
+});
